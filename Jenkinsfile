@@ -11,7 +11,7 @@ pipeline {
         RESOURCE_GROUP = 'dev-opps'
         AKS_CLUSTER_NAME = 'golanapp'
         REPO_URL = 'https://github.com/Mujadid13/golan-app.git'
-        HELM_CHART_PATH_GOLAN = 'golan-app'
+        HELM_CHART_PATH_GOLAN = './olan-app'
         HELM_RELEASE_NAME_GOLAN = 'golan-app'
     }
 
