@@ -64,7 +64,7 @@ pipeline {
         stage('Deploy Golan App with Helm') {
             steps {
                 script {
-                    sh 'helm upgrade --install golan-app my-local-repo/golan-app --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG '
+                    sh 'helm upgrade --install golan-app golan-app/golan-app --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG '
                 }
             }
         }
