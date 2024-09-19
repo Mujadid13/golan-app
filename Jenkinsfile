@@ -11,7 +11,6 @@ pipeline {
         RESOURCE_GROUP = 'dev-opps'
         AKS_CLUSTER_NAME = 'golanapp'
         REPO_URL = 'https://github.com/Mujadid13/golan-app.git'
-        HELM_CHART_PATH_GOLAN = 'golan-app'
         HELM_RELEASE_NAME_GOLAN = 'golan-app'
     }
 
@@ -65,7 +64,7 @@ pipeline {
         stage('Deploy Golan App with Helm') {
             steps {
                 script {
-                    sh 'helm upgrade --install $HELM_RELEASE_NAME_GOLAN $HELM_CHART_PATH_GOLAN --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG '
+                    sh 'helm upgrade --install golan-app helm --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG --values helm/values.yaml'
                 }
             }
         }
