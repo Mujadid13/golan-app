@@ -65,7 +65,7 @@ pipeline {
         stage('Deploy Golan App with Helm') {
             steps {
                 script {
-                    sh 'helm upgrade --install $HELM_RELEASE_NAME_GOLAN $HELM_CHART_PATH_GOLAN --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG --values helm/charts/golan-app/values.yaml'
+                    sh 'helm upgrade --install $HELM_RELEASE_NAME_GOLAN $HELM_CHART_PATH_GOLAN --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG '
                 }
             }
         }
