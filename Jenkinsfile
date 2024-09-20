@@ -10,7 +10,7 @@ pipeline {
         IMAGE_TAG = 'latest'
         RESOURCE_GROUP = 'dev-opps'
         AKS_CLUSTER_NAME = 'golanapp'
-        REPO_URL = 'https://github.com/Mujadid13/golan-app.git'
+        REPO_URL = 'https://github.com/Mujadid13/golan-app2.git'
         HELM_RELEASE_NAME_GOLAN = 'helm/charts/golan-app'
     }
 
