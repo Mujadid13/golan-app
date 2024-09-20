@@ -1,19 +1,15 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
   name: redis-server
+  labels:
+    app: redis-server
 spec:
-  replicas: 1
+  type: ClusterIP  # Change to LoadBalancer if external access is needed
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+      name: redis-server
   selector:
-    matchLabels:
-      app: redis-server
-  template:
-    metadata:
-      labels:
-        app: redis-server
-    spec:
-      containers:
-      - name: redis-server
-        image: redis:latest  # Use the official Redis image
-        ports:
-        - containerPort: 6379
+    app: redis-server
