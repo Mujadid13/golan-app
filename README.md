@@ -6,7 +6,6 @@ This project involves deploying applications to Azure Kubernetes Service (AKS) u
 - [Prerequisites](https://github.com/Mujadid13/golan-app2/blob/main/README.md#prerequisites)
 * [Terraform Setup](https://github.com/Mujadid13/golan-app2/blob/main/README.md#terraform-setup)
 + [Helm Setup](https://github.com/Mujadid13/golan-app2/blob/main/README.md#helm-setup)
-- [Local Setup for Helm Chart](https://github.com/Mujadid13/golan-app2/blob/main/README.md#local-setup-for-helm-chart)
 * [Jenkins CI/CD Pipelines](https://github.com/Mujadid13/golan-app2/blob/main/README.md#jenkins-cicd-pipelines)
 + [Additional Information](https://github.com/Mujadid13/golan-app2/blob/main/README.md#additional-information)
 
@@ -54,46 +53,7 @@ Helm Charts: Ensure your Helm charts are configured correctly for your applicati
 - Use Helm commands to install or upgrade your applications based on the configurations in your `values.yaml files`.
 
 #### Verify Deployment:
-- Check the status of your Helm releases to ensure the applications are running correctly in your AKS cluster.
-
-## Local Setup for Helm Chart
-
-#### Create a Local Directory for the Helm Repository:
-- mkdir -p ~/my-helm-repo
-
-#### Navigate to Your Helm Chart Directory: 
-- Go to the directory where your Helm chart (golan-app) is located.
-
-#### Package the Helm Chart:
-- helm package .
-
-#### Move the Packaged Chart to the Local Repository:
-- mv golan-app-0.1.0.tgz ~/my-helm-repo/
-
-#### Generate the Index File: 
-- Navigate to the local repository directory and generate the index:
-* cd ~/my-helm-repo
-+ helm repo index .
-
-#### Add the Helm Repository: 
-- Use the following command to add your local Helm repo:
-* helm repo add golan-app http://localhost:8000
-
-#### Open Port 8000 on Your NSG: 
-- Ensure that port 8000 is open on your Network Security Group (NSG) to allow access.
-
-#### Update the Helm Repository: 
-- Run the following command to update your Helm repo:
-* helm repo update
-
-#### Accessing the Repository: 
-- Instead of using localhost:8000, use your VM's public IP address to access the Helm repository.
-
-### Notes
-- Make sure you have a local HTTP server running on port 8000 to serve the Helm charts.
-* You can use a simple server like Python’s built-in HTTP server:
-+ cd ~/my-helm-repo
-- nohup python3 -m http.server 8000 &
+- Check the status of your Helm releases using `helm list ` to ensure the applications are running correctly in your AKS cluster.
 
 ## Jenkins CI/CD Pipelines
 #### Overview:
@@ -105,7 +65,7 @@ Jenkins pipelines are used to automate the processes of building Docker images, 
 
 * **Build Docker Image**: Build Docker images from your Dockerfile and push them to ACR.
 
-+ **Deploy to AKS**: Deploy the Docker images to AKS using Helm charts. The pipeline should handle upgrading or installing Helm releases with the latest Docker image tags.
++ **Package and Deploy Helm Chart**: The pipeline will automatically package the Helm chart (`golan-app`), update the Helm repository, and deploy it to AKS using the latest Docker image tags.
 
 #### Configuration Details:
 
@@ -119,6 +79,7 @@ Trigger the Jenkins pipelines to execute the build and deployment processes. Mon
 ## Additional Information
 #### Troubleshooting:
 Consult Jenkins logs, AKS logs, and Terraform output for any issues that arise during setup or deployment.
+If the website takes too long to respond, simply refresh the page, and it should work.
 
 #### Best Practices:
 Follow security and resource management best practices to maintain a reliable deployment process.
