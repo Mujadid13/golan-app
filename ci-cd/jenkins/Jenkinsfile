@@ -76,14 +76,11 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    pwd
-                    mkdir -p $CREATE_HELM_REPO_DIR
-                    ls -ld ~/my-helm-repo
+                    mkdir -p ~/my-helm-repo
                     cd golan-app
                     helm package .
-                    mv golan-app-0.1.0.tgz HELM_REPO_DIR
-                    ls -lh
-                    cd $HELM_REPO_DIR
+                    mv golan-app-0.1.0.tgz ~/my-helm-repo
+                    cd ~/my-helm-repo
                     helm repo index .
                     helm repo add golan-app http://localhost:8000
                     helm repo update
