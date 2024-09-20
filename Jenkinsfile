@@ -65,8 +65,8 @@ pipeline {
         stage('Deploy Redis') {
             steps {
                 script {
-                    sh 'kubectl apply -f redis-deployment.yaml '
-                    sh 'kubectl apply -f redis-service.yaml '
+                    sh 'kubectl apply -f redis/redis-deployment.yaml '
+                    sh 'kubectl apply -f redis/redis-service.yaml '
                 }
             }
         }
