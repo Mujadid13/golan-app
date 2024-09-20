@@ -1,7 +1,7 @@
 # Project Documentation
 
 ## ⚠️ Important Notice
-If the website takes too long to respond, simply refresh the page, and it should work.
+If the website shows it took long to respond, simply refresh the page, and it should work.
 
 ## Overview
 This project involves deploying applications to Azure Kubernetes Service (AKS) using Helm charts, managed with Terraform for infrastructure provisioning, and CI/CD pipelines via Jenkins for streamlined deployment processes.
