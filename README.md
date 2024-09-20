@@ -3,12 +3,12 @@
 This project involves deploying applications to Azure Kubernetes Service (AKS) using Helm charts, managed with Terraform for infrastructure provisioning, and CI/CD pipelines via Jenkins for streamlined deployment processes.
 
 ## Table of Contents
-- [Prerequisites](https://github.com/Mujadid13/golan-app2/edit/main/README.md#prerequisites)
-* [Terraform Setup](https://github.com/Mujadid13/golan-app2/edit/main/README.md#terraform-setup)
-+ [Helm Setup](https://github.com/Mujadid13/golan-app2/edit/main/README.md#helm-setup)
-- [Local Setup for Helm Chart](https://github.com/Mujadid13/golan-app2/edit/main/README.md#local-setup-for-helm-chart)
-* [Jenkins CI/CD Pipelines](https://github.com/Mujadid13/golan-app2/edit/main/README.md#jenkins-cicd-pipelines)
-+ [Additional Information](https://github.com/Mujadid13/golan-app2/edit/main/README.md#additional-information)
+- [Prerequisites](https://github.com/Mujadid13/golan-app2/main/README.md#prerequisites)
+* [Terraform Setup](https://github.com/Mujadid13/golan-app2/main/README.md#terraform-setup)
++ [Helm Setup](https://github.com/Mujadid13/golan-app2/main/README.md#helm-setup)
+- [Local Setup for Helm Chart](https://github.com/Mujadid13/golan-app2/main/README.md#local-setup-for-helm-chart)
+* [Jenkins CI/CD Pipelines](https://github.com/Mujadid13/golan-app2/main/README.md#jenkins-cicd-pipelines)
++ [Additional Information](https://github.com/Mujadid13/golan-app2/main/README.md#additional-information)
 
 ## Prerequisites
 Before you begin, ensure you have the following installed and configured:
