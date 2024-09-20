@@ -3,7 +3,7 @@
 This project involves deploying applications to Azure Kubernetes Service (AKS) using Helm charts, managed with Terraform for infrastructure provisioning, and CI/CD pipelines via Jenkins for streamlined deployment processes.
 
 ## Table of Contents
-- [Prerequisites](https://github.com/Mujadid13/golan-app2/main/README.md#prerequisites)
+- [Prerequisites](https://github.com/Mujadid13/golan-app2/blob/main/README.md#overview)
 * [Terraform Setup](https://github.com/Mujadid13/golan-app2/main/README.md#terraform-setup)
 + [Helm Setup](https://github.com/Mujadid13/golan-app2/main/README.md#helm-setup)
 - [Local Setup for Helm Chart](https://github.com/Mujadid13/golan-app2/main/README.md#local-setup-for-helm-chart)
