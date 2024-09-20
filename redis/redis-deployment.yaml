@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis
+  name: redis-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: redis
+      app: redis-server
   template:
     metadata:
       labels:
-        app: redis
+        app: redis-server
     spec:
       containers:
-      - name: redis
+      - name: redis-server
         image: redis:latest  # Use the official Redis image
         ports:
         - containerPort: 6379
