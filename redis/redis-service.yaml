@@ -5,7 +5,7 @@ metadata:
   labels:
     app: redis
 spec:
-  type: ClusterIP  # Change to LoadBalancer if you need external access
+  type: ClusterIP  # Change to LoadBalancer if external access is needed
   ports:
     - port: 6379
       targetPort: 6379
