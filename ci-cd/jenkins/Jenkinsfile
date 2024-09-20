@@ -12,7 +12,7 @@ pipeline {
         AKS_CLUSTER_NAME = 'golanapp'
         REPO_URL = 'https://github.com/Mujadid13/golan-app2.git'
         HELM_RELEASE_NAME_GOLAN = 'helm/charts/golan-app'
-        HELM_REPO_DIR = '~/my-helm-repo'
+        HELM_REPO_DIR = 'root/~/my-helm-repo'
     }
 
     stages {
@@ -78,6 +78,7 @@ pipeline {
                     mkdir -p $HELM_REPO_DIR
                     cd golan-app
                     helm package .
+                    pwd
                     mv golan-app-0.1.0.tgz $HELM_REPO_DIR/
                     cd $HELM_REPO_DIR
                     helm repo index .
