@@ -93,7 +93,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    cd $HELM_REPO_DIR
+                    cd ~/my-helm-repo
                     nohup python3 -m http.server 8000 &
                     '''
                 }
