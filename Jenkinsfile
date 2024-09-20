@@ -61,6 +61,15 @@ pipeline {
             }
         }
 
+        stage('Deploy Redis') {
+            steps {
+                script {
+                    sh 'kubectl apply -f redis/redis-deployment.yaml'
+                    sh 'kubectl apply -f redis/redis-service.yaml'
+                }
+            }
+        }
+
         stage('Deploy Golan App with Helm') {
             steps {
                 script {
