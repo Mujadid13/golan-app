@@ -76,7 +76,7 @@ pipeline {
                 script {
                     sh '''
                     mkdir -p $HELM_REPO_DIR
-                    cd golan-app
+                    cd helm-chart/golan-app
                     helm package .
                     mv golan-app-0.1.0.tgz $HELM_REPO_DIR
                     cd $HELM_REPO_DIR
