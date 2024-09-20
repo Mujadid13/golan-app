@@ -12,8 +12,7 @@ pipeline {
         AKS_CLUSTER_NAME = 'golanapp'
         REPO_URL = 'https://github.com/Mujadid13/golan-app2.git'
         HELM_RELEASE_NAME_GOLAN = 'helm/charts/golan-app'
-        CREATE_HELM_REPO_DIR = '~/my-helm-repo'
-        HELM_REPO_DIR = '/my-helm-repo'
+        HELM_REPO_DIR = '~/my-helm-repo'
     }
 
     stages {
