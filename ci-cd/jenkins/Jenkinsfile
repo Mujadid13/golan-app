@@ -82,6 +82,7 @@ pipeline {
                     cd golan-app
                     helm package .
                     mv golan-app-0.1.0.tgz HELM_REPO_DIR
+                    ls -lh
                     cd $HELM_REPO_DIR
                     helm repo index .
                     helm repo add golan-app http://localhost:8000
