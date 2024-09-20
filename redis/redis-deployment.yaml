@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: redis
-        image: golan.azurecr.io/golan-redis:latest
+        image: redis:latest  # Use the official Redis image
         ports:
         - containerPort: 6379
