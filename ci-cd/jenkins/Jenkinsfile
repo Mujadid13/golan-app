@@ -12,6 +12,7 @@ pipeline {
         AKS_CLUSTER_NAME = 'golanapp'
         REPO_URL = 'https://github.com/Mujadid13/golan-app2.git'
         HELM_RELEASE_NAME_GOLAN = 'helm/charts/golan-app'
+        HELM_REPO_DIR = '~/my-helm-repo'
     }
 
     stages {
@@ -22,7 +23,6 @@ pipeline {
                 }
             }
         }
-
 
         stage('Build Docker Image') {
             steps {
@@ -65,8 +65,36 @@ pipeline {
         stage('Deploy Redis') {
             steps {
                 script {
-                    sh 'kubectl apply -f redis/redis-deployment.yaml '
-                    sh 'kubectl apply -f redis/redis-service.yaml '
+                    sh 'kubectl apply -f redis/redis-deployment.yaml'
+                    sh 'kubectl apply -f redis/redis-service.yaml'
+                }
+            }
+        }
+
+        stage('Package and Configure Helm Repo') {
+            steps {
+                script {
+                    sh '''
+                    mkdir -p $HELM_REPO_DIR
+                    cd golan-app
+                    helm package .
+                    mv golan-app-0.1.0.tgz $HELM_REPO_DIR/
+                    cd $HELM_REPO_DIR
+                    helm repo index .
+                    helm repo add golan-app http://localhost:8000
+                    helm repo update
+                    '''
+                }
+            }
+        }
+
+        stage('Serve Helm Repo Locally') {
+            steps {
+                script {
+                    sh '''
+                    cd $HELM_REPO_DIR
+                    nohup python3 -m http.server 8000 &
+                    '''
                 }
             }
         }
@@ -74,7 +102,7 @@ pipeline {
         stage('Deploy Golan App with Helm') {
             steps {
                 script {
-                    sh 'helm upgrade --install golan-app golan-app/golan-app --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG '
+                    sh 'helm upgrade --install golan-app golan-app/golan-app --set image.repository=$ACR_NAME.azurecr.io/$ACR_REPO_NAME --set image.tag=$IMAGE_TAG'
                 }
             }
         }
