@@ -23,11 +23,6 @@ pipeline {
             }
         }
 
-        stage('List Workspace') {
-    steps {
-        sh 'ls -R'
-    }
-}
 
         stage('Build Docker Image') {
             steps {
