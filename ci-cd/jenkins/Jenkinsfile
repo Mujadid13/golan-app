@@ -75,11 +75,11 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    mkdir -p ~/my-helm-repo
+                    mkdir -p $HELM_REPO_DIR
                     cd golan-app
                     helm package .
-                    mv golan-app-0.1.0.tgz ~/my-helm-repo
-                    cd ~/my-helm-repo
+                    mv golan-app-0.1.0.tgz $HELM_REPO_DIR
+                    cd $HELM_REPO_DIR
                     helm repo index .
                     helm repo add golan-app http://localhost:8000
                     helm repo update
@@ -92,7 +92,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    cd ~/my-helm-repo
+                    cd $HELM_REPO_DIR
                     nohup python3 -m http.server 8000 &
                     '''
                 }
